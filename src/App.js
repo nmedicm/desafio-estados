@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Alert from "./components/Alert";
+import Header from "./components/Header";
+import Login from "./components/Login";
 
 function App() {
+  
+  const [alert, setAlert] = useState({
+    mensaje: "",
+    color: ""
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Header></Header>
+
+      <Login setAlert={setAlert}/>
+
+      {alert.mensaje !== "" ? <Alert color={alert.color}>{alert.mensaje}</Alert> : null}
+    </>
+    )
 }
 
 export default App;
